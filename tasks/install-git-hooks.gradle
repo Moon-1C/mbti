@@ -1,5 +1,5 @@
 tasks.create(name: 'gitExecutableHooks') {
-//    Runtime.getRuntime().exec("chmod -R +x .git/hooks/");
+    Runtime.getRuntime().exec("chmod -R +x .git/hooks/");
 }
 
 task installGitHooks(type: Copy) {
