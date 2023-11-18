@@ -5,4 +5,3 @@ spring:
     include:
       - flyway-local
       - mysql-local
-      - security-local

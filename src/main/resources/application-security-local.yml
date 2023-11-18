@@ -1,7 +1,0 @@
-security:
-  jwt:
-    token:
-      validtime:
-        access: 31557600000
-        refresh: 31557600000
-      secretkey: jwtsecretKeyhastolonghowlongidontknow

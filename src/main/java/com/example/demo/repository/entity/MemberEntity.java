@@ -1,10 +1,9 @@
 package com.example.demo.repository.entity;
 
-import java.util.List;
 import javax.persistence.*;
 import lombok.*;
 
-@Entity(name = "member_entity")
+@Entity
 @Getter
 @ToString
 @AllArgsConstructor
@@ -15,7 +14,7 @@ public class MemberEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "member_id")
-	private Long id;
+	private long id;
 
 	@Column(unique = true)
 	private String email;
@@ -24,18 +23,7 @@ public class MemberEntity {
 
 	private String password;
 
-	@OneToMany(mappedBy = "member")
-	private List<ChatRoomListEntity> chatRoomLists;
-
-	public boolean isPassword(String target) {
-		return password.equals(target);
-	}
-
-	@Builder.Default
-	@Column(nullable = false)
-	private Boolean deleted = false;
-
-	public void delete() {
-		this.deleted = true;
-	}
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_survey_id")
+	private MemberSurveyEntity memberSurvey;
 }
