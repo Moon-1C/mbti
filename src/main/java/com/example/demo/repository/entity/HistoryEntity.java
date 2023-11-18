@@ -1,22 +1,24 @@
 package com.example.demo.repository.entity;
 
+import java.util.Date;
 import javax.persistence.*;
 import lombok.*;
 
-@Entity
+@Entity(name = "history_entity")
 @Getter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class ChatSurveyEntity {
+public class HistoryEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "chat_survey_id")
+	@Column(name = "history_id")
 	private Long id;
 
-	private double version;
+	private String history;
 
-	private String answer;
+	@Column(name = "create_date")
+	private Date createDate;
 }
