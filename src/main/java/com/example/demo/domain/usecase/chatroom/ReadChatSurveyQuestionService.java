@@ -3,7 +3,7 @@ package com.example.demo.domain.usecase.chatroom;
 import com.example.demo.repository.entity.ChatRoomSurveyQuestionEntity;
 import com.example.demo.repository.repository.ChatSurveyQuestionRepository;
 import com.example.demo.web.dto.response.ChatSurveyQuestionResponse;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class ReadChatSurveyQuestionService {
 	private final ChatSurveyQuestionRepository chatSurveyQuestionRepository;
 
 	public ChatSurveyQuestionResponse execute(double version) {
-		Map<String, String> data = new HashMap<>();
+		Map<String, String> survey = new LinkedHashMap<>();
 
 		List<ChatRoomSurveyQuestionEntity> items =
 				chatSurveyQuestionRepository.findAllByVersion(version);
@@ -26,9 +26,9 @@ public class ReadChatSurveyQuestionService {
 			String question = item.getQuestion();
 			String selection = item.getSelection();
 
-			data.put(question, selection);
+			survey.put(question, selection);
 		}
 
-		return ChatSurveyQuestionResponse.builder().version(version).data(data).build();
+		return ChatSurveyQuestionResponse.builder().version(version).survey(survey).build();
 	}
 }

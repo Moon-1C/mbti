@@ -15,7 +15,7 @@ public class GptAiResponse implements AiResponse {
 	}
 
 	private String connect(String message) {
-		String url = "http://localhost:80/predict";
+		String url = "http://localhost:8000/predict";
 
 		GptMessageRequest requestDto = GptMessageRequest.builder().data(message).build();
 

@@ -9,9 +9,7 @@ import lombok.*;
 @Builder(toBuilder = true)
 public class VoteDestinationDomainRequest {
 
-    private Long chatRoomId;
-    private Long memberId;
-    private String voteResult;
-
-
+	private Long chatRoomId;
+	private Long memberId;
+	private String voteResult;
 }

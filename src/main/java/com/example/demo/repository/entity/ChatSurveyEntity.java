@@ -16,6 +16,10 @@ public class ChatSurveyEntity {
 	@Column(name = "chat_survey_id")
 	private Long id;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "chat_room_id")
+	private ChatRoomEntity chatRoom;
+
 	private double version;
 
 	private String answer;

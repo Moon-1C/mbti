@@ -21,15 +21,45 @@ INSERT INTO mbti.member_survey_question_entity (version, question) VALUES (1, "�
 
 
 INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "이번 여행의 주 목적은 무엇인가요?", "휴식과 힐링,모험과 탐험,문화와 역사 체험,스포츠와 레저 활동,쇼핑과 먹방 투어");
-INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "Question2", "ans21,ans22,ans23,ans24,ans25");
-INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "Question3", "ans31,ans32,ans33,ans34,ans35");
-INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "Question4", "ans41,ans42,ans43,ans44,ans45");
-INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "Question5", "ans51,ans52,ans53,ans54,ans55");
-INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "Question6", "ans61,ans62,ans63,ans64,ans65");
-INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "Question7", "ans71,ans72,ans73,ans74,ans75");
-INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "Question8", "ans81,ans82,ans83,ans84,ans85");
-INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "Question9", "ans91,ans92,ans93,ans94,ans95");
-INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "Question10", "ans101,ans102,ans103,ans104,ans105");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행지에서 가장 중요하게 생각하는 활동은 무엇인가요?", "자연 경치 감상,현지 음식 체험,역사적인 장소 방문,스포츠나 야외 활동,공연이나 예술 감상");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행 중에 가장 선호하는 숙박 형태는 무엇인가요?", "호텔 또는 리조트,게스트하우스 또는 호스텔,민박이나 홈스테이,캠핑 또는 글램핑,특색 있는 숙소 (ex. 트리하우스/도서관 호텔 등)");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행 중에 얼마나 많은 시간을 야외 활동에 할애하고 싶으신가요?", "대부분의 시간,절반 정도의 시간,조금의 시간,거의 하지 않을 예정,전혀 하지 않을 예정");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행지에서 가장 기억에 남는 순간은 어떤 것을 원하시나요?", "아름다운 일출이나 일몰 감상,현지인과의 교류와 친목,도전적인 활동 체험,전통 문화와 예술 체험,특별한 음식이나 음료 체험");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행 중에 가장 선호하는 이동 수단은 무엇인가요?", "도보,자전거,대중교통 (ex. 버스/기차 등),렌터카나 자동차,배나 요트");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행지에서 가장 선호하는 시간대의 활동은 언제인가요?", "아침,낮,오후,저녁,밤");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행 중에 어떤 유형의 음식을 선호하시나요?", "현지 전통 음식,글로벌 요리 (ex. 피자/햄버거 등),베지테리언 또는 비건 요리,해산물 요리,디저트와 스위트");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행지에서 가장 선호하는 휴식 방법은 무엇인가요?", "해변에서의 휴식,숲이나 산에서의 휴식,카페나 레스토랑에서의 휴식,숙소에서의 휴식,스파나 마사지");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행 중에 가장 선호하는 쇼핑 아이템은 무엇인가요?", "전통 공예품,의류나 액세서리,현지 특산품,예술 작품,기념품이나 선물");
 
 INSERT INTO mbti.history_entity (history, create_date) VALUES ("성산일출봉,한라산","2020-09-01");
 INSERT INTO mbti.history_entity (history, create_date) VALUES ("성산일출봉2,한라산2","2020-09-02");
+
+INSERT INTO mbti.member_entity(name,password,email,deleted) values ("문영상","1234","1@1",0);
+INSERT INTO mbti.member_entity(name,password,email,deleted) values ("나제법","1234","1@2",0);
+INSERT INTO mbti.member_entity(name,password,email,deleted) values ("김진영","1234","1@3",0);
+INSERT INTO mbti.member_entity(name,password,email,deleted) values ("김종준","1234","1@4",0);
+INSERT INTO mbti.member_entity(name,password,email,deleted) values ("안호균","1234","1@5",0);
+
+INSERT INTO mbti.chat_room_entity(title,password,headcount,member_id,is_complete) VALUES("title","1234",5,1,0);
+
+insert into mbti.chat_room_list_entity(chat_room_id,member_id) values (1,1);
+insert into mbti.chat_room_list_entity(chat_room_id,member_id) values (1,2);
+insert into mbti.chat_room_list_entity(chat_room_id,member_id) values (1,3);
+insert into mbti.chat_room_list_entity(chat_room_id,member_id) values (1,4);
+insert into mbti.chat_room_list_entity(chat_room_id,member_id) values (1,5);
+
+insert into mbti.spot_entity(chat_room_id,spot) values (1,"제주도명소1");
+insert into mbti.spot_entity(chat_room_id,spot) values (1,"제주도명소2");
+insert into mbti.spot_entity(chat_room_id,spot) values (1,"제주도명소3");
+insert into mbti.spot_entity(chat_room_id,spot) values (1,"제주도명소4");
+insert into mbti.spot_entity(chat_room_id,spot) values (1,"제주도명소5");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "이번 여행의 주 목적은 무엇인가요?", "휴식과 힐링,모험과 탐험,문화와 역사 체험,스포츠와 레저 활동,쇼핑과 먹방 투어");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행지에서 가장 중요하게 생각하는 활동은 무엇인가요?", "자연 경치 감상,현지 음식 체험,역사적인 장소 방문,스포츠나 야외 활동,공연이나 예술 감상");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행 중에 가장 선호하는 숙박 형태는 무엇인가요?", "호텔 또는 리조트,게스트하우스 또는 호스텔,민박이나 홈스테이,캠핑 또는 글램핑,특색 있는 숙소 (ex. 트리하우스, 도서관 호텔 등)");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행 중에 얼마나 많은 시간을 야외 활동에 할애하고 싶으신가요?", "대부분의 시간,절반 정도의 시간,조금의 시간,거의 하지 않을 예정,전혀 하지 않을 예정");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행지에서 가장 기억에 남는 순간은 어떤 것을 원하시나요?", "아름다운 일출이나 일몰 감상,현지인과의 교류와 친목,도전적인 활동 체험,전통 문화와 예술 체험,특별한 음식이나 음료 체험");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행 중에 가장 선호하는 이동 수단은 무엇인가요?", "도보,자전거,대중교통 (버스, 기차 등),렌터카나 자동차,배나 요트");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행지에서 가장 선호하는 시간대의 활동은 언제인가요?", "아침,낮,오후,저녁,밤");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행 중에 어떤 유형의 음식을 선호하시나요?", "현지 전통 음식,글로벌 요리 (피자, 햄버거 등),베지테리언 또는 비건 요리,해산물 요리,디저트와 스위트");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행지에서 가장 선호하는 휴식 방법은 무엇인가요?", "해변에서의 휴식,숲이나 산에서의 휴식,카페나 레스토랑에서의 휴식,숙소에서의 휴식,스파나 마사지");
+INSERT INTO mbti.chat_room_survey_question_entity (version, question, selection) VALUES (1, "여행 중에 가장 선호하는 쇼핑 아이템은 무엇인가요?", "전통 공예품,의류나 액세서리,현지 특산품,예술 작품,기념품이나 선물");

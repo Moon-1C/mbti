@@ -11,8 +11,5 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 public class VoteDestinationRequest {
 
-
-    private String voteResult;
-
-
+	private String voteResult;
 }

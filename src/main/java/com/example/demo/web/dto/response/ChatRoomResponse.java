@@ -1,7 +1,6 @@
 package com.example.demo.web.dto.response;
 
-import com.example.demo.repository.entity.constant.ChatRoomStatus;
-import java.util.Map;
+import java.util.List;
 import lombok.*;
 
 @Getter
@@ -11,5 +10,5 @@ import lombok.*;
 @Builder(toBuilder = true)
 public class ChatRoomResponse {
 
-	private Map<Long, ChatRoomStatus> chatRooms;
+	private List<ChatRoomInfo> chatRoomInfos;
 }

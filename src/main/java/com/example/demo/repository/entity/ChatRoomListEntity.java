@@ -1,11 +1,14 @@
 package com.example.demo.repository.entity;
 
+import com.example.demo.repository.entity.constant.ChatRoomStatus;
 import javax.persistence.*;
 import lombok.*;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.hibernate.annotations.ColumnDefault;
 
-@Entity
+@Entity(name = "chat_room_list_entity")
 @Getter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
@@ -24,5 +27,17 @@ public class ChatRoomListEntity {
 	@JoinColumn(name = "member_id")
 	private MemberEntity member;
 
-	// TODO: 양방향 연관관계 메서드 추가
+	@Enumerated(EnumType.STRING)
+	@Builder.Default
+	@ColumnDefault("'SURVEY'")
+	private ChatRoomStatus chatStatus = ChatRoomStatus.SURVEY;
+
+	public void changeChatStatus(ChatRoomStatus chatStatus) {
+		this.chatStatus = chatStatus;
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+	}
 }

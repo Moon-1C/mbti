@@ -2,12 +2,11 @@ package com.example.demo.domain.usecase.chatroom;
 
 import com.example.demo.repository.entity.ChatRoomEntity;
 import com.example.demo.repository.entity.ChatRoomListEntity;
-import com.example.demo.repository.entity.constant.ChatRoomStatus;
 import com.example.demo.repository.repository.ChatRoomListRepository;
+import com.example.demo.web.dto.response.ChatRoomInfo;
 import com.example.demo.web.dto.response.ChatRoomResponse;
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,13 +24,22 @@ public class ReadChatRoomService {
 	}
 
 	private ChatRoomResponse generateChatRoomResponse(List<ChatRoomListEntity> chatRoomList) {
-		Map<Long, ChatRoomStatus> chatRooms = new LinkedHashMap<>();
+		List<ChatRoomInfo> chatRoomInfos = new ArrayList<>();
 
 		for (ChatRoomListEntity chatRoomListEntity : chatRoomList) {
 			ChatRoomEntity chatRoom = chatRoomListEntity.getChatRoom();
-			chatRooms.put(chatRoom.getId(), chatRoom.getStatus());
+			chatRoomInfos.add(generateChatRoomInfo(chatRoomListEntity, chatRoom));
 		}
 
-		return ChatRoomResponse.builder().chatRooms(chatRooms).build();
+		return ChatRoomResponse.builder().chatRoomInfos(chatRoomInfos).build();
+	}
+
+	private ChatRoomInfo generateChatRoomInfo(
+			ChatRoomListEntity chatRoomListEntity, ChatRoomEntity chatRoom) {
+		return ChatRoomInfo.builder()
+				.title(chatRoom.getTitle())
+				.chatroomId(chatRoom.getId())
+				.chatroomStatus(chatRoomListEntity.getChatStatus())
+				.build();
 	}
 }

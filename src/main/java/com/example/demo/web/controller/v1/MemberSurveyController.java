@@ -33,7 +33,8 @@ public class MemberSurveyController {
 	}
 
 	@PostMapping
-	public String receive(ReceiveMemberSurveyRequest survey, HttpServletRequest request) {
+	public String receive(
+			@RequestBody ReceiveMemberSurveyRequest survey, HttpServletRequest request) {
 		Long memberId = findMemberByToken(request);
 		receiveMemberSurveyService.execute(survey, memberId);
 
@@ -41,8 +42,8 @@ public class MemberSurveyController {
 	}
 
 	private Long findMemberByToken(HttpServletRequest request) {
-		String authentication = request.getHeader("Authentication");
-		String substring = authentication.substring(7, authentication.length());
+		String authorization = request.getHeader("Authorization");
+		String substring = authorization.substring(7, authorization.length());
 		UserDetails userDetails = tokenUserDetailsService.loadUserByUsername(substring);
 		Long memberId = Long.parseLong(userDetails.getUsername());
 		return memberId;

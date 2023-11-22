@@ -1,11 +1,11 @@
 package com.example.demo.repository.entity;
 
-import com.example.demo.repository.entity.constant.ChatRoomStatus;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import javax.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 @Entity(name = "chat_room_entity")
 @Getter
@@ -20,18 +20,9 @@ public class ChatRoomEntity {
 	@Column(name = "chat_room_id")
 	private Long id;
 
-	@OneToMany
-	@JoinColumn(name = "chat_survey_id")
-	private List<ChatSurveyEntity> chatSurvey;
-
 	private String title;
 
 	private String password;
-
-	@Enumerated(EnumType.STRING)
-	@Builder.Default
-	@ColumnDefault("'SURVEY'")
-	private ChatRoomStatus status = ChatRoomStatus.SURVEY;
 
 	private String spot;
 
@@ -41,6 +32,23 @@ public class ChatRoomEntity {
 
 	private Date end;
 
+	@OneToOne
+	@JoinColumn(name = "member_id")
+	private MemberEntity manager;
+
+	private Boolean isComplete;
+
 	@OneToMany(mappedBy = "chatRoom")
 	private List<ChatRoomListEntity> chatRoomLists;
+
+	public long getTripPeriod() {
+		LocalDate startDate = start.toLocalDate();
+		LocalDate endDate = end.toLocalDate();
+
+		return ChronoUnit.DAYS.between(startDate, endDate);
+	}
+
+	public void changeComplete() {
+		this.isComplete = true;
+	}
 }
